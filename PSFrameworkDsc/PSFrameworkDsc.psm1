@@ -53,14 +53,12 @@ class PSFramework
     	The scope it is set to.
 		DSC can only access the machine wide settings.
     #>
-	[DscProperty]
 	[Scope] $Scope;
 	
     <#
 		The value to apply
 		Is only mandatory when $Ensure is set to "Present"
     #>
-	[DscProperty]
 	[string] $Value;
 	#endregion DSC Properties
 	
