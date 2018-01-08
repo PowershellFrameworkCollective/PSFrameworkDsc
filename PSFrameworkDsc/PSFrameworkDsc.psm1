@@ -1,4 +1,4 @@
-ï»¿enum Ensure
+enum Ensure
 {
 	Absent
 	Present
@@ -31,7 +31,7 @@ class PSFramework
 		A DSC resource must define at least one key property.
     #>
 	[DscProperty(Key)]
-	[string]$FullName;
+	[string]$FullName
 	
     <#
 		This property indicates if the settings should be present or absent
@@ -47,19 +47,21 @@ class PSFramework
 		calls the resource. This is appropriate for optional properties.
     #>
 	[DscProperty(Mandatory)]
-	[Ensure] $Ensure;
+	[Ensure]$Ensure
 	
     <#
     	The scope it is set to.
 		DSC can only access the machine wide settings.
     #>
-	[Scope] $Scope;
+	[DscProperty()]
+	[Scope]$Scope
 	
     <#
 		The value to apply
 		Is only mandatory when $Ensure is set to "Present"
     #>
-	[string] $Value;
+	[DscProperty()]
+	[string]$Value
 	#endregion DSC Properties
 	
 	#region DSC Methods
@@ -241,7 +243,7 @@ class PSFramework
 				{
 					$list += $this.Serialize($item)
 				}
-				return "array:$($list -join "Ã¾Ã¾Ã¾")"
+				return "array:$($list -join "þþþ")"
 			}
 			"System.Boolean"
 			{
@@ -292,7 +294,7 @@ class PSFramework
 			"array"
 			{
 				$list = @()
-				foreach ($item in ($content -split "Ã¾Ã¾Ã¾"))
+				foreach ($item in ($content -split "þþþ"))
 				{
 					$list += $this.Deserialize($item)
 				}
